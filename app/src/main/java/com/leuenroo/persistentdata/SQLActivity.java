@@ -47,7 +47,6 @@ public class SQLActivity extends ListActivity {
         switch (view.getId()) {
             case R.id.add:
 
-
                 // save the new comment to the database
                 nt = datasource.createComment(mEditText.getText().toString());
                 adapter.add(nt);

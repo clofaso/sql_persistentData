@@ -1,10 +1,9 @@
 package com.leuenroo.persistentdata.DB;
 
-
-
 public class Note {
     private long id;
     private String note;
+    private String date;
 
     public long getId() {
         return id;
@@ -22,9 +21,18 @@ public class Note {
         this.note = nt;
     }
 
+    public void setDate(String dt) {
+        this.date = dt;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
     // Will be used by the ArrayAdapter in the ListView
     @Override
     public String toString() {
-        return note;
+        String result = "" + getNote() +" " + getDate();
+        return result;
     }
 }

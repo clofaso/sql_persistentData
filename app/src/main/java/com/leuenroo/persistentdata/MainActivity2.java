@@ -13,24 +13,27 @@ public class MainActivity2 extends AppCompatActivity {
     @BindView(R.id.filesClick )TextView mTv2;
     @BindView(R.id.sqlLiteClick )TextView mTv3;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
 
+        //Anonymous class creation to call onClick -- which is the only abstract class
         mTv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity2.this,FilesActivity.class));
             }
         });
+                // ^can be converted into lambda expression (shown below)
+        /*
+        mTv2.setOnClickListener (v ->
+            startActivity(new Intent(MainActivity2.this,FilesActivity.class))
+        );
+         */
 
         mTv3.setOnClickListener(this::goToSQL);
-
-
-
     }
 
     private void goToSQL(View view) {
@@ -41,6 +44,5 @@ public class MainActivity2 extends AppCompatActivity {
     public void goToSharedPref(View view) {
         startActivity(new Intent(this,MainActivity.class));
     }
-
 
 }

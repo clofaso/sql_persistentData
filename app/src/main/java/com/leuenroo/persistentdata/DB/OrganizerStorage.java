@@ -15,7 +15,7 @@ public class OrganizerStorage {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_COMMENT };
+            MySQLiteHelper.COLUMN_COMMENT, MySQLiteHelper.COLUMN_DATE };
 
     public OrganizerStorage(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -30,7 +30,6 @@ public class OrganizerStorage {
     }
 
     public Note createComment(String comment) {
-
 
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_COMMENT, comment);
@@ -76,6 +75,7 @@ public class OrganizerStorage {
         Note note = new Note();
         note.setId(cursor.getLong(0));
         note.setNote(cursor.getString(1));
+        note.setDate(cursor.getString(2));
         return note;
     }
 }

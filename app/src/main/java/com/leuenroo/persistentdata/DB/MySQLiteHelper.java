@@ -10,15 +10,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_COMMENTS = "OrganizerNotes";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_COMMENT = "note";
+    public static final String COLUMN_DATE = "date";
 
     private static final String DATABASE_NAME = "organizer_notes.db";
     private static final int DATABASE_VERSION = 1;
 
-    // Database creation sql statement
+    // Database creation sql statement -- ** pay close attention to spacing in the declaration below **
     private static final String DATABASE_CREATE = "create table "
             + TABLE_COMMENTS + "( " + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_COMMENT
-            + " text not null);";
+            + " text not null, " + COLUMN_DATE + " date not null);";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
